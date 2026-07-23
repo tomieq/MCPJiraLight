@@ -8,9 +8,9 @@ services:
     build:
       dockerfile: Dockerfile
     ports:
-      - 8093:8080
-    container_name: mcp
-    hostname: mcp
+      - 8089:8089
+    container_name: jira_mcp
+    hostname: jira_mcp
     restart: always
     networks:
       - home-network
