@@ -1,0 +1,68 @@
+import Foundation
+import Swifter
+import Logger
+import SwiftExtensions
+import Env
+
+class RestServer {
+    private let server = HttpServer()
+    private let logger = Logger(RestServer.self)
+    private let mcp = ModelContextProtocol()
+    
+    init() throws {
+        server.name = "Jira MCP Server"
+        server.middleware.append { [unowned self] request, header in
+            logger.i("Request \(request.id) \(request.method) \(request.path) from \(request.clientIP ?? "")")
+            request.onFinished { [unowned self] summary in
+                logger.i("Request \(summary.requestID) finished with \(summary.responseCode) [\(summary.responseSize)] in \(String(format: "%.3f", summary.durationInSeconds)) seconds")
+            }
+            return nil
+        }
+        server.post["/"] = { _, _ in
+                .ok(.json(MCPError(jsonrpc: "2.0", id: nil,
+                                   error: .init(code: -32601, message: "Method not found")
+                                  )
+                ))
+        }
+        server.post["/mcp"] = { [unowned self] request, _ in
+            logger.d("body: \n\(request.body.string?.prettyJSON ?? "nil")")
+            let command: Command<NoArguments> = try request.body.decode()
+            logger.i("command: \(command.method) \(command.params?.name ?? "")")
+            
+            switch command.method {
+            case "initialize":
+                let response = mcp.initialize(id: command.id.or(0))
+                logger.d("response: \(response.json ?? "nil")")
+                return .ok(.json(response))
+            case "notifications/initialized":
+                return .ok(.text(""))
+            case "tools/list":
+                let response = mcp.list(id: command.id.or(0))
+                logger.d("response: \(response.json ?? "nil")")
+                return .ok(.json(response))
+            case "tools/call":
+                let response = try mcp.call(id: command.id.or(0),
+                                            name: command.params?.name ?? "",
+                                            body: request.body,
+                )
+                logger.d(response.json ?? "nil")
+                return .ok(.json(response))
+            default:
+                break
+            }
+            return .internalServerError(nil)
+        }
+        let port: UInt16
+        if let configuredPort = Env.shared.int("localPort") {
+            port = UInt16(configuredPort)
+        } else {
+            port = 8080
+        }
+        try server.start(port, forceIPv4: true)
+        logger.i("Server started on port \(try server.port)")
+        Process.watchSignals { [unowned self] _ in
+            server.stop()
+            exit(EXIT_SUCCESS)
+        }
+    }
+}

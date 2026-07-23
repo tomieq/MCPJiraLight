@@ -1,0 +1,51 @@
+{
+  "originHash" : "9e547a424d75ffa7240a6933a234ef118538a697e4935b2489c0fb7b7484bcf5",
+  "pins" : [
+    {
+      "identity" : "env",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomieq/Env.git",
+      "state" : {
+        "revision" : "a1aef7b68d3a5d23a293597a95874fb7f4fe07a7",
+        "version" : "1.0.8"
+      }
+    },
+    {
+      "identity" : "logger",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomieq/Logger.git",
+      "state" : {
+        "revision" : "85301b460dce3c4671054a879895fa3df3bbf9fe",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "swifter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomieq/swifter.git",
+      "state" : {
+        "revision" : "f80410f8ad1e47db4d126faf2447f7f9a7af4bc0",
+        "version" : "3.1.1"
+      }
+    },
+    {
+      "identity" : "swiftextensions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomieq/SwiftExtensions",
+      "state" : {
+        "revision" : "25f8cafc1f6f4fa0e162ae383d96f93943b05ad9",
+        "version" : "2.0.0"
+      }
+    },
+    {
+      "identity" : "webresponse",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomieq/WebResponse",
+      "state" : {
+        "revision" : "4c4471442ecef9863239d2b989c8e92a5818d283",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
