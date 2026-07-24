@@ -57,3 +57,20 @@ On initialization, the server advertises itself as `JiraMCP` and reports that it
 - `get_jira_ticket`: accepts a required `jiraID` argument and returns the matching Jira issue payload.
 
 If `JIRA_TOKEN` or `JIRA_HOST` is missing, the server still starts, but the Jira tool returns an error message explaining that Jira is not configured.
+
+## Verify command
+```
+curl -sS -X POST http://localhost:8089/mcp \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "get_jira_ticket",
+      "arguments": {
+        "jiraID": "TICKET-12345"
+      }
+    }
+  }'
+```
