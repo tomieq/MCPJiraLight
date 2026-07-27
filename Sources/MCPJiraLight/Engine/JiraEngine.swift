@@ -41,14 +41,13 @@ class JiraEngine: Engine {
                               properties: ["jiraID": .init(type: .string, description: "jiraID")],
                               required: ["jiraID"])
              ),
-        
-            .init(JiraCommand.get_jira_attachment,
-                  description: "Allows to download attachment by its attachmentPath",
-                  inputSchema:
-                    ToolParameter(type: .object,
-                                  properties: ["attachmentPath": .init(type: .string, description: "attachmentPath defined in jira response")],
-                                  required: ["attachmentPath"])
-                 )
+        .init(JiraCommand.get_jira_attachment,
+              description: "Allows to download attachment by its attachmentPath",
+              inputSchema:
+                ToolParameter(type: .object,
+                              properties: ["attachmentPath": .init(type: .string, description: "attachmentPath defined in jira response")],
+                              required: ["attachmentPath"])
+             )
        ]
     
     func call(_ command: String, body: HttpRequestBody) throws -> ToolResult {
