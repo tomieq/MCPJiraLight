@@ -8,6 +8,7 @@ import Swifter
 import Logger
 import Env
 import WebResponse
+import MCPServer
 
 enum JiraCommand: String, Codable {
     case get_jira_ticket
@@ -21,7 +22,7 @@ extension JiraCommand: CustomStringConvertible {
 
 class JiraEngine: Engine {
     private let logger = Logger(JiraEngine.self)
-    let instructions = "Provides content of Jira tickets"
+    let instructions = "Use this tool to get JIRA ticket details."
     
     func command(for rawValue: String) -> JiraCommand? {
         JiraCommand(rawValue: rawValue)

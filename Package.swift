@@ -13,7 +13,7 @@ let package = Package(
         .package(url: "https://github.com/tomieq/Logger", .upToNextMajor(from: "1.1.0")),
         .package(url: "https://github.com/tomieq/Env", .upToNextMajor(from: "1.0.8")),
         .package(url: "https://github.com/tomieq/WebResponse", .upToNextMajor(from: "1.1.0")),
-        .package(url: "https://github.com/tomieq/SwiftExtensions", .upToNextMajor(from: "2.0.0"))
+        .package(url: "https://github.com/tomieq/MCPServer", branch: "master")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -23,7 +23,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Swifter", package: "Swifter"),
                 .product(name: "Logger", package: "Logger"),
-                .product(name: "SwiftExtensions", package: "SwiftExtensions"),
+                .product(name: "MCPServer", package: "MCPServer"),
                 .product(name: "Env", package: "Env"),
                 .product(name: "WebResponse", package: "WebResponse")
             ]

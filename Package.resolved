@@ -1,5 +1,5 @@
 {
-  "originHash" : "9e547a424d75ffa7240a6933a234ef118538a697e4935b2489c0fb7b7484bcf5",
+  "originHash" : "a66e0ab71b254aa3cff0b6447ceb7b8da4295d146c360957a16ca480cd56eb9f",
   "pins" : [
     {
       "identity" : "env",
@@ -20,6 +20,15 @@
       }
     },
     {
+      "identity" : "mcpserver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tomieq/MCPServer",
+      "state" : {
+        "branch" : "master",
+        "revision" : "21546a63546dcfa471f1cff0e918e614f518e39a"
+      }
+    },
+    {
       "identity" : "swifter",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tomieq/swifter.git",
@@ -33,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tomieq/SwiftExtensions",
       "state" : {
-        "revision" : "25f8cafc1f6f4fa0e162ae383d96f93943b05ad9",
-        "version" : "2.0.0"
+        "revision" : "f3c8b038ff2d44ec600316cab07326a69b4c79cf",
+        "version" : "2.0.1"
       }
     },
     {
