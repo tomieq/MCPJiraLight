@@ -1,5 +1,5 @@
 {
-  "originHash" : "a66e0ab71b254aa3cff0b6447ceb7b8da4295d146c360957a16ca480cd56eb9f",
+  "originHash" : "e14df59b744e0dc17f3920e37c4b66d1edc486d8908236984d91d563ad059750",
   "pins" : [
     {
       "identity" : "env",
@@ -29,6 +29,24 @@
       }
     },
     {
+      "identity" : "swift-asn1",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-asn1.git",
+      "state" : {
+        "revision" : "a9a5efd40eaf558a2bcd48d64b1d1646be686008",
+        "version" : "1.7.1"
+      }
+    },
+    {
+      "identity" : "swift-crypto",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-crypto.git",
+      "state" : {
+        "revision" : "95ba0316a9b733e92bb6b071255ff46263bbe7dc",
+        "version" : "3.15.1"
+      }
+    },
+    {
       "identity" : "swifter",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tomieq/swifter.git",
@@ -51,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tomieq/WebResponse",
       "state" : {
-        "revision" : "4c4471442ecef9863239d2b989c8e92a5818d283",
-        "version" : "1.1.0"
+        "branch" : "master",
+        "revision" : "aabf12befdb510ab8e9c6425a6cf347fb91c3756"
       }
     }
   ],

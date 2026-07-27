@@ -12,7 +12,7 @@ let package = Package(
         .package(url: "https://github.com/tomieq/swifter", .upToNextMajor(from: "3.1.1")),
         .package(url: "https://github.com/tomieq/Logger", .upToNextMajor(from: "1.1.0")),
         .package(url: "https://github.com/tomieq/Env", .upToNextMajor(from: "1.0.8")),
-        .package(url: "https://github.com/tomieq/WebResponse", .upToNextMajor(from: "1.1.0")),
+        .package(url: "https://github.com/tomieq/WebResponse", branch: "master"),
         .package(url: "https://github.com/tomieq/MCPServer", branch: "master")
     ],
     targets: [
