@@ -43,11 +43,11 @@ class JiraEngine: Engine {
              ),
         
             .init(JiraCommand.get_jira_attachment,
-                  description: "Allows to download attachment by its attachmentID",
+                  description: "Allows to download attachment by its attachmentPath",
                   inputSchema:
                     ToolParameter(type: .object,
-                                  properties: ["attachmentID": .init(type: .string, description: "attachmentID")],
-                                  required: ["attachmentID"])
+                                  properties: ["attachmentPath": .init(type: .string, description: "attachmentPath defined in jira response")],
+                                  required: ["attachmentPath"])
                  )
        ]
     
@@ -91,12 +91,12 @@ class JiraEngine: Engine {
             }
         case .get_jira_attachment:
             struct JiraInfo: Codable {
-                let attachmentID: String
+                let attachmentPath: String
             }
             let command: Command<JiraInfo> = try body.decode()
-            guard let attachmentID = command.params?.arguments?.attachmentID else {
-                logger.e("Missing attachmentID")
-                dto = ToolResult(["Missing attachmentID"])
+            guard let attachmentPath = command.params?.arguments?.attachmentPath else {
+                logger.e("Missing attachmentPath")
+                dto = ToolResult(["Missing attachmentPath"])
                 break
             }
             guard let token = Env.shared.get("JIRA_TOKEN") else {
@@ -108,7 +108,7 @@ class JiraEngine: Engine {
                 break
             }
             
-            let url = "\(jiraHost)\(attachmentID)"
+            let url = "\(jiraHost)/\(attachmentPath.trimming("/"))"
             let result = WebResponse<Data>
                 .default
                 .get(url: url, headers: [

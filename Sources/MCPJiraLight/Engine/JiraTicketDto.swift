@@ -39,7 +39,7 @@ struct JiraAttachmentDto: Codable {
     let size: Int
     let filename: String
     let content: String?
-    let attachmentID: String?
+    let attachmentPath: String?
 }
 
 extension JiraTicketDto {
@@ -69,6 +69,6 @@ extension JiraAttachmentDto {
             size: self.size,
             filename: self.filename,
             content: nil,
-            attachmentID: self.content?.replacingOccurrences(of: originalHost, with: ""))
+            attachmentPath: self.content?.replacingOccurrences(of: originalHost, with: ""))
     }
 }
